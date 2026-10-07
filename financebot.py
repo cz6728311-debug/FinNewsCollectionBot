@@ -145,7 +145,7 @@ def summarize(text):
 # 发送微信推送
 def send_to_wechat(title, content):
     for key in server_chan_keys:
-        url = f"https://sctapi.ftqq.com/{key}.send"
+        url = f"https://push.showdoc.com.cn/api/push/{send_key}.send"
         data = {"title": title, "desp": content}
         response = requests.post(url, data=data, timeout=10)
         if response.ok:
