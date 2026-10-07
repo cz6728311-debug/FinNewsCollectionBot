@@ -145,15 +145,14 @@ def summarize(text):
 # 发送微信推送
 def send_to_wechat(title, content):
     for key in server_chan_keys:
-        url = f"https://push.showdoc.com.cn/api/push/{send_key}.send"
+        # 使用 Server 酱新版 API 地址，替换掉旧的 url
+        url = f"https://sctapi.ftqq.com/{key}.send"
         data = {"title": title, "desp": content}
         response = requests.post(url, data=data, timeout=10)
         if response.ok:
             print(f"✅ 推送成功: {key}")
         else:
-            print(f"❌ 推送失败: {key}, 响应：{response.text}")
-
-
+            print(f"❌ 推送失败: {key}，响应: {response.text}")
 if __name__ == "__main__":
     today_str = today_date().strftime("%Y-%m-%d")
 
